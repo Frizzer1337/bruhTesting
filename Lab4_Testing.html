@@ -1,0 +1,680 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>
+Тест кейсы</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="0e35c0bc-bd93-43b4-834c-f8e6f147920f" class="page sans"><header><h1 class="page-title">
+Тест кейсы</h1></header><div class="page-body"><table class="collection-content"><thead><tr id="f925b1fb-7ad6-40cb-8e16-dc79fd91ef8b"><td class="cell-title"><a href="https://www.notion.so/f925b1fb7ad640cb8e16dc79fd91ef8b">Фильтрация на сайте</a></td><td class="cell-a~~f">Проверка фильтров на сайте , поисковая строка имеет вид
+<a href="https://store.vaporesso.com/collections/all">https://store.vaporesso.com/collections/all</a></td><td class="cell-j\uU"><span style="margin-right:6px"><a href="%D0%A2%D0%B5%D1%81%D1%82%20%D0%BA%D0%B5%D0%B8%CC%86%D1%81%D1%8B%200e35c0bcbd9343b4834cf8e6f147920f/%D0%A4%D0%B8%D0%BB%D1%8C%D1%82%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%BD%D0%B0%20%D1%81%D0%B0%D0%B8%CC%86%D1%82%D0%B5%20f925b1fb7ad640cb8e16dc79fd91ef8b/%25D0%25A1%25D0%25BD%25D0%25B8%25D0%25BC%25D0%25BE%25D0%25BA_%25D1%258D%25D0%25BA%25D1%2580%25D0%25B0%25D0%25BD%25D0%25B0_2022-10-19_014341.png"><img style="width:20px;max-height:24px" src="%D0%A2%D0%B5%D1%81%D1%82%20%D0%BA%D0%B5%D0%B8%CC%86%D1%81%D1%8B%200e35c0bcbd9343b4834cf8e6f147920f/%D0%A4%D0%B8%D0%BB%D1%8C%D1%82%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%BD%D0%B0%20%D1%81%D0%B0%D0%B8%CC%86%D1%82%D0%B5%20f925b1fb7ad640cb8e16dc79fd91ef8b/%25D0%25A1%25D0%25BD%25D0%25B8%25D0%25BC%25D0%25BE%25D0%25BA_%25D1%258D%25D0%25BA%25D1%2580%25D0%25B0%25D0%25BD%25D0%25B0_2022-10-19_014341.png" alt="Снимок экрана 2022-10-19 014341.png"/></a></span></td><td class="cell-QHWR">1</td><td class="cell-~Pes">Проверка стандартной фильтрации</td><td class="cell-TEC\"></td><td class="cell-qczN">Фильтрация производится по алфавиту, буквы идут по порядку, при совпадении первой буквы фильтрация производится по второй и так далее, поисковая строка не должна содержать фильтров</td><td class="cell-yWlD">Фильтрация работает корректно, при совпадении всех букв у двух названий и конце одного из них, первым будет стоять то которое короче - “BARR” первее “BARR 40”</td><td class="cell-ULm`"></td></tr><tr id="ce3c921a-3a54-4915-b991-51f429b48c63"><td class="cell-title"><a href="https://www.notion.so/ce3c921a3a544915b99151f429b48c63">Untitled</a></td><td class="cell-a~~f"></td><td class="cell-j\uU"></td><td class="cell-QHWR"></td><td class="cell-~Pes"></td><td class="cell-TEC\"></td><td class="cell-qczN"></td><td class="cell-yWlD"></td><td class="cell-ULm`"></td></tr><tr id="2e70cafb-79c9-4fe4-bc95-c98e81b08a10"><td class="cell-title"><a href="https://www.notion.so/2e70cafb79c94fe4bc95c98e81b08a10">Фильтрация по возрастанию цены</a></td><td class="cell-a~~f">Проверка фильтров на сайте, 
+поисковая строка имеет вид
+<a href="https://store.vaporesso.com/collections/all?sort_by=price-ascending">https://store.vaporesso.com/collections/all?sort_by=price-ascending</a></td><td class="cell-j\uU"></td><td class="cell-QHWR">1</td><td class="cell-~Pes">Открыто окошко с фильтрами, выбран фильтр “Price, low to high”</td><td class="cell-TEC\"></td><td class="cell-qczN">Фильтрация произведется по цене, при равной цене каждый раз порядок товаров будет одинаков и стабилен, сортировать будет с учетом скидки</td><td class="cell-yWlD">Фильтрация работает корректно, производится на основании цены со скидкой, при равной цене товаров их порядок постоянен</td><td class="cell-ULm`"></td></tr><tr id="660a8995-b56c-45b3-b4dd-18c32a853049"><td class="cell-title"><a href="https://www.notion.so/660a8995b56c45b3b4dd18c32a853049">Untitled</a></td><td class="cell-a~~f"></td><td class="cell-j\uU"></td><td class="cell-QHWR">2</td><td class="cell-~Pes">По очереди просмотрены все страницы</td><td class="cell-TEC\"></td><td class="cell-qczN"></td><td class="cell-yWlD"></td><td class="cell-ULm`"></td></tr><tr id="20f79e0c-f1c4-4f16-bdc5-844ba0aa9eae"><td class="cell-title"><a href="https://www.notion.so/20f79e0cf1c44f16bdc5844ba0aa9eae">Untitled</a></td><td class="cell-a~~f"></td><td class="cell-j\uU"></td><td class="cell-QHWR"></td><td class="cell-~Pes"></td><td class="cell-TEC\"></td><td class="cell-qczN"></td><td class="cell-yWlD"></td><td class="cell-ULm`"></td></tr><tr id="9096a90a-ba99-4517-9390-bee5e68ef5c5"><td class="cell-title"><a href="https://www.notion.so/9096a90aba9945179390bee5e68ef5c5">Фильтрация по убыванию цены</a></td><td class="cell-a~~f">Проверка фильтров на сайте, 
+поисковая строка имеет вид <a href="https://store.vaporesso.com/collections/all?sort_by=price-descending">https://store.vaporesso.com/collections/all?sort_by=price-descending</a></td><td class="cell-j\uU"></td><td class="cell-QHWR">1</td><td class="cell-~Pes">Открыто окошко с фильтрами, выбран фильтр “Price, high to low”</td><td class="cell-TEC\"></td><td class="cell-qczN">Фильтрация произведется по цене, при равной цене каждый раз порядок товаров будет одинаков и стабилен, сортировать будет с учетом скидки</td><td class="cell-yWlD">Фильтрация работает корректно, производится на основании цены со скидкой, при равной цене товаров их порядок постоянен</td><td class="cell-ULm`"></td></tr><tr id="01974692-ec4e-4a5b-8935-d4010e2fbda8"><td class="cell-title"><a href="https://www.notion.so/01974692ec4e4a5b8935d4010e2fbda8">Untitled</a></td><td class="cell-a~~f"></td><td class="cell-j\uU"></td><td class="cell-QHWR">2</td><td class="cell-~Pes">По очереди просмотрены все страницы</td><td class="cell-TEC\"></td><td class="cell-qczN"></td><td class="cell-yWlD"></td><td class="cell-ULm`"></td></tr><tr id="13e8dc21-a176-498b-9bb8-ca9ef3f9d55c"><td class="cell-title"><a href="https://www.notion.so/13e8dc21a176498b9bb8ca9ef3f9d55c">Untitled</a></td><td class="cell-a~~f"></td><td class="cell-j\uU"></td><td class="cell-QHWR"></td><td class="cell-~Pes"></td><td class="cell-TEC\"></td><td class="cell-qczN"></td><td class="cell-yWlD"></td><td class="cell-ULm`"></td></tr><tr id="bbbfd9d9-ffab-4a06-aa85-d4c8998cf996"><td class="cell-title"><a href="https://www.notion.so/bbbfd9d9ffab4a06aa85d4c8998cf996">Фильтрация по дате появления в продаже</a></td><td class="cell-a~~f">Проверка фильтров на сайте, 
+поисковая строка имеет вид <a href="https://store.vaporesso.com/collections/all?sort_by=created-ascending">https://store.vaporesso.com/collections/all?sort_by=created-ascending</a></td><td class="cell-j\uU"></td><td class="cell-QHWR">1</td><td class="cell-~Pes">Открыто окошко с фильтрами, выбран фильтр “Date, old to new”</td><td class="cell-TEC\"></td><td class="cell-qczN">Фильтрация произведется по дате создания, при одинаковой дате создания, порядок будет стабилен</td><td class="cell-yWlD">Фильтрация работает корректно, так как информации о датах на сайте нет, то предположил относительно обратного фильтра)</td><td class="cell-ULm`"></td></tr><tr id="5c56c893-d60f-4820-acc4-87bd24f82bd4"><td class="cell-title"><a href="https://www.notion.so/5c56c893d60f4820acc487bd24f82bd4">Untitled</a></td><td class="cell-a~~f"></td><td class="cell-j\uU"></td><td class="cell-QHWR">2</td><td class="cell-~Pes">По очереди просмотрены все страницы</td><td class="cell-TEC\"></td><td class="cell-qczN"></td><td class="cell-yWlD"></td><td class="cell-ULm`"></td></tr><tr id="0d38d00e-52c4-4c92-a6b9-5061e287bf4e"><td class="cell-title"><a href="https://www.notion.so/0d38d00e52c44c92a6b95061e287bf4e">Untitled</a></td><td class="cell-a~~f"></td><td class="cell-j\uU"></td><td class="cell-QHWR"></td><td class="cell-~Pes"></td><td class="cell-TEC\"></td><td class="cell-qczN"></td><td class="cell-yWlD"></td><td class="cell-ULm`"></td></tr><tr id="2ff66ae4-67a1-420e-8c09-e01e26ae4c5b"><td class="cell-title"><a href="https://www.notion.so/2ff66ae467a1420e8c09e01e26ae4c5b">Фильтрация при помощи дополнительной панели</a></td><td class="cell-a~~f">Проверка фильтров при помощи дополнительной панели фильтрации</td><td class="cell-j\uU"></td><td class="cell-QHWR">1</td><td class="cell-~Pes">Нажат + и открыта дополнительная панель фильтрации</td><td class="cell-TEC\"></td><td class="cell-qczN">Фильтрация будет работать корректно</td><td class="cell-yWlD">Фильтрация работает неверно, выдает товары рандомной цены</td><td class="cell-ULm`"><span style="margin-right:6px"><a href="%D0%A2%D0%B5%D1%81%D1%82%20%D0%BA%D0%B5%D0%B8%CC%86%D1%81%D1%8B%200e35c0bcbd9343b4834cf8e6f147920f/%D0%A4%D0%B8%D0%BB%D1%8C%D1%82%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%BF%D1%80%D0%B8%20%D0%BF%D0%BE%D0%BC%D0%BE%D1%89%D0%B8%20%D0%B4%D0%BE%D0%BF%D0%BE%D0%BB%D0%BD%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%B8%CC%86%20%D0%BF%D0%B0%D0%BD%D0%B5%D0%BB%D0%B8%202ff66ae467a1420e8c09e01e26ae4c5b/%25D0%25A1%25D0%25BD%25D0%25B8%25D0%25BC%25D0%25BE%25D0%25BA_%25D1%258D%25D0%25BA%25D1%2580%25D0%25B0%25D0%25BD%25D0%25B0_2022-10-19_020712.png"><img style="width:20px;max-height:24px" src="%D0%A2%D0%B5%D1%81%D1%82%20%D0%BA%D0%B5%D0%B8%CC%86%D1%81%D1%8B%200e35c0bcbd9343b4834cf8e6f147920f/%D0%A4%D0%B8%D0%BB%D1%8C%D1%82%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%BF%D1%80%D0%B8%20%D0%BF%D0%BE%D0%BC%D0%BE%D1%89%D0%B8%20%D0%B4%D0%BE%D0%BF%D0%BE%D0%BB%D0%BD%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%B8%CC%86%20%D0%BF%D0%B0%D0%BD%D0%B5%D0%BB%D0%B8%202ff66ae467a1420e8c09e01e26ae4c5b/%25D0%25A1%25D0%25BD%25D0%25B8%25D0%25BC%25D0%25BE%25D0%25BA_%25D1%258D%25D0%25BA%25D1%2580%25D0%25B0%25D0%25BD%25D0%25B0_2022-10-19_020712.png" alt="Снимок экрана 2022-10-19 020712.png"/></a></span></td></tr><tr id="2718bf18-e38d-487a-8b41-d57bbe291e3e"><td class="cell-title"><a href="https://www.notion.so/2718bf18e38d487a8b41d57bbe291e3e">Untitled</a></td><td class="cell-a~~f"></td><td class="cell-j\uU"></td><td class="cell-QHWR">2</td><td class="cell-~Pes">Выбраны цены 1 - 30</td><td class="cell-TEC\"></td><td class="cell-qczN">Выведет товары цена которых со скидкой составляет 30- долларов, при граничных значениях будет округление</td><td class="cell-yWlD">Выдает не все товары, но при этом работает неверно</td><td class="cell-ULm`"></td></tr><tr id="c2a4a535-7ab5-41ae-8772-03b9011f9ecd"><td class="cell-title"><a href="https://www.notion.so/c2a4a5357ab541ae877203b9011f9ecd">Untitled</a></td><td class="cell-a~~f"></td><td class="cell-j\uU"></td><td class="cell-QHWR">3</td><td class="cell-~Pes">Выбраны цены 30 - 60</td><td class="cell-TEC\"></td><td class="cell-qczN">Выведет товары цена которых со скидкой составляет 30-60 долларов, при граничных значениях будет округление</td><td class="cell-yWlD">Выдает не все товары, но при этом работает неверно</td><td class="cell-ULm`"></td></tr><tr id="0208e97e-8017-4b06-b259-6d5c66496a06"><td class="cell-title"><a href="https://www.notion.so/0208e97e80174b06b2596d5c66496a06">Untitled</a></td><td class="cell-a~~f"></td><td class="cell-j\uU"></td><td class="cell-QHWR">4</td><td class="cell-~Pes">Выбраны цены 60-90</td><td class="cell-TEC\"></td><td class="cell-qczN">Выведет товары цена которых со скидкой составляет 60-90 долларов, при граничных значениях будет округление</td><td class="cell-yWlD">Работает корректно(удивительно)</td><td class="cell-ULm`"></td></tr><tr id="aec9b455-04a1-43f6-827a-7d9ed039a077"><td class="cell-title"><a href="https://www.notion.so/aec9b45504a143f6827a7d9ed039a077">Untitled</a></td><td class="cell-a~~f"></td><td class="cell-j\uU"></td><td class="cell-QHWR">5</td><td class="cell-~Pes">Выбраны цены 1-30 и 30-60</td><td class="cell-TEC\"></td><td class="cell-qczN">Выведет товары цена которых со скидкой составляет 1-60 долларов, при граничных значениях будет округление</td><td class="cell-yWlD">Выдает не все товары, но при этом работает неверно</td><td class="cell-ULm`"></td></tr><tr id="630decf3-bccc-4fa4-ae3f-219a02e18eee"><td class="cell-title"><a href="https://www.notion.so/630decf3bccc4fa4ae3f219a02e18eee">Untitled</a></td><td class="cell-a~~f"></td><td class="cell-j\uU"></td><td class="cell-QHWR"></td><td class="cell-~Pes"></td><td class="cell-TEC\"></td><td class="cell-qczN"></td><td class="cell-yWlD"></td><td class="cell-ULm`"></td></tr><tr id="ddd0fce9-148b-413e-8bb4-0d9c00977650"><td class="cell-title"><a href="https://www.notion.so/ddd0fce9148b413e8bb40d9c00977650">Фильтрация при помощи дополнительной панели по цвету</a></td><td class="cell-a~~f">Проверка фильтров по цвету при помощи дополнительной панели фильтрации</td><td class="cell-j\uU"></td><td class="cell-QHWR">1</td><td class="cell-~Pes">Нажат + и открыта дополнительная панель фильтрации</td><td class="cell-TEC\"></td><td class="cell-qczN">Фильтрация будет работать корректно, у всех выведенных устройств будет в наличии заданный цвет</td><td class="cell-yWlD">Фильтрация работает корректно, учитываются комбинации цветов</td><td class="cell-ULm`"></td></tr><tr id="52e8cf50-7855-47ea-b08a-eec76c499765"><td class="cell-title"><a href="https://www.notion.so/52e8cf50785547eab08aeec76c499765">Untitled</a></td><td class="cell-a~~f"></td><td class="cell-j\uU"></td><td class="cell-QHWR">2</td><td class="cell-~Pes">По очереди выбраны все цвета</td><td class="cell-TEC\"></td><td class="cell-qczN"></td><td class="cell-yWlD"></td><td class="cell-ULm`"></td></tr><tr id="47de658f-492d-40eb-bcb8-96560658a40a"><td class="cell-title"><a href="https://www.notion.so/47de658f492d40ebbcb896560658a40a">Untitled</a></td><td class="cell-a~~f"></td><td class="cell-j\uU"></td><td class="cell-QHWR"></td><td class="cell-~Pes"></td><td class="cell-TEC\"></td><td class="cell-qczN"></td><td class="cell-yWlD"></td><td class="cell-ULm`"></td></tr><tr id="ee5ca243-c0b3-4388-bab0-4b71b3e78622"><td class="cell-title"><a href="https://www.notion.so/ee5ca243c0b34388bab04b71b3e78622">Сброс фильтров</a></td><td class="cell-a~~f">Проверка сброса фильтров через дополнительную панель</td><td class="cell-j\uU"></td><td class="cell-QHWR">1</td><td class="cell-~Pes">Нажат + и открыта дополнительная панель фильтрации</td><td class="cell-TEC\"></td><td class="cell-qczN">Фильтрация будут сброшены, при переходе на другую страницу и обратно фильтрация останется сброшена</td><td class="cell-yWlD">Сброс фильтрации работает корректно</td><td class="cell-ULm`"></td></tr><tr id="3e24f153-6320-4a65-84f9-1c4dc749d44a"><td class="cell-title"><a href="https://www.notion.so/3e24f15363204a6584f91c4dc749d44a">Untitled</a></td><td class="cell-a~~f"></td><td class="cell-j\uU"></td><td class="cell-QHWR">2</td><td class="cell-~Pes">Нажата кнопка “reset”</td><td class="cell-TEC\"></td><td class="cell-qczN"></td><td class="cell-yWlD"></td><td class="cell-ULm`"></td></tr><tr id="1f34dada-4943-495d-bb77-995d8ac5a7f6"><td class="cell-title"><a href="https://www.notion.so/1f34dada4943495dbb77995d8ac5a7f6">Untitled</a></td><td class="cell-a~~f"></td><td class="cell-j\uU"></td><td class="cell-QHWR"></td><td class="cell-~Pes"></td><td class="cell-TEC\"></td><td class="cell-qczN"></td><td class="cell-yWlD"></td><td class="cell-ULm`"></td></tr><tr id="6366f48f-5701-462d-8137-2323627fba60"><td class="cell-title"><a href="https://www.notion.so/6366f48f5701462d81372323627fba60">Проверка фильтрации по типу вейпа</a></td><td class="cell-a~~f"></td><td class="cell-j\uU"><span style="margin-right:6px"><a href="%D0%A2%D0%B5%D1%81%D1%82%20%D0%BA%D0%B5%D0%B8%CC%86%D1%81%D1%8B%200e35c0bcbd9343b4834cf8e6f147920f/%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B0%20%D1%84%D0%B8%D0%BB%D1%8C%D1%82%D1%80%D0%B0%D1%86%D0%B8%D0%B8%20%D0%BF%D0%BE%20%D1%82%D0%B8%D0%BF%D1%83%20%D0%B2%D0%B5%D0%B8%CC%86%D0%BF%D0%B0%206366f48f5701462d81372323627fba60/%25D0%25A1%25D0%25BD%25D0%25B8%25D0%25BC%25D0%25BE%25D0%25BA_%25D1%258D%25D0%25BA%25D1%2580%25D0%25B0%25D0%25BD%25D0%25B0_2022-10-19_022436.png"><img style="width:20px;max-height:24px" src="%D0%A2%D0%B5%D1%81%D1%82%20%D0%BA%D0%B5%D0%B8%CC%86%D1%81%D1%8B%200e35c0bcbd9343b4834cf8e6f147920f/%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B0%20%D1%84%D0%B8%D0%BB%D1%8C%D1%82%D1%80%D0%B0%D1%86%D0%B8%D0%B8%20%D0%BF%D0%BE%20%D1%82%D0%B8%D0%BF%D1%83%20%D0%B2%D0%B5%D0%B8%CC%86%D0%BF%D0%B0%206366f48f5701462d81372323627fba60/%25D0%25A1%25D0%25BD%25D0%25B8%25D0%25BC%25D0%25BE%25D0%25BA_%25D1%258D%25D0%25BA%25D1%2580%25D0%25B0%25D0%25BD%25D0%25B0_2022-10-19_022436.png" alt="Снимок экрана 2022-10-19 022436.png"/></a></span></td><td class="cell-QHWR">1</td><td class="cell-~Pes">По очереди выбраны все виды из списка</td><td class="cell-TEC\"></td><td class="cell-qczN">На странице останутся только товары подходящей категории, к ним можно будет применить фильтрацию</td><td class="cell-yWlD">Все работает корректно, фильтрация к оставшимся товарам работает, но отсутствует возможность добавить в список желаний </td><td class="cell-ULm`"></td></tr><tr id="631ca72e-bf05-4eae-a1dd-dbb9740d82b8"><td class="cell-title"><a href="https://www.notion.so/631ca72ebf054eaea1dddbb9740d82b8">Untitled</a></td><td class="cell-a~~f"></td><td class="cell-j\uU"></td><td class="cell-QHWR"></td><td class="cell-~Pes"></td><td class="cell-TEC\"></td><td class="cell-qczN"></td><td class="cell-yWlD"></td><td class="cell-ULm`"></td></tr><tr id="a03ac97b-e9dc-4390-9027-057cf9c01f4e"><td class="cell-title"><a href="https://www.notion.so/a03ac97be9dc43909027057cf9c01f4e">Проверка списка желаний</a></td><td class="cell-a~~f"></td><td class="cell-j\uU"><span style="margin-right:6px"><a href="%D0%A2%D0%B5%D1%81%D1%82%20%D0%BA%D0%B5%D0%B8%CC%86%D1%81%D1%8B%200e35c0bcbd9343b4834cf8e6f147920f/%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B0%20%D1%81%D0%BF%D0%B8%D1%81%D0%BA%D0%B0%20%D0%B6%D0%B5%D0%BB%D0%B0%D0%BD%D0%B8%D0%B8%CC%86%20a03ac97be9dc43909027057cf9c01f4e/%25D0%25A1%25D0%25BD%25D0%25B8%25D0%25BC%25D0%25BE%25D0%25BA_%25D1%258D%25D0%25BA%25D1%2580%25D0%25B0%25D0%25BD%25D0%25B0_2022-10-19_023059.png"><img style="width:20px;max-height:24px" src="%D0%A2%D0%B5%D1%81%D1%82%20%D0%BA%D0%B5%D0%B8%CC%86%D1%81%D1%8B%200e35c0bcbd9343b4834cf8e6f147920f/%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B0%20%D1%81%D0%BF%D0%B8%D1%81%D0%BA%D0%B0%20%D0%B6%D0%B5%D0%BB%D0%B0%D0%BD%D0%B8%D0%B8%CC%86%20a03ac97be9dc43909027057cf9c01f4e/%25D0%25A1%25D0%25BD%25D0%25B8%25D0%25BC%25D0%25BE%25D0%25BA_%25D1%258D%25D0%25BA%25D1%2580%25D0%25B0%25D0%25BD%25D0%25B0_2022-10-19_023059.png" alt="Снимок экрана 2022-10-19 023059.png"/></a></span></td><td class="cell-QHWR">1</td><td class="cell-~Pes">Нажато сердечко</td><td class="cell-TEC\">My Wishlistffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+My wishlist
+My wishlist1
+_____ - “_” Это пробел
+My wishlist_</td><td class="cell-qczN">Будет создан новый список желаний, он будет пустым, при повторном создании списка с таким же названием будет выдана ошибка</td><td class="cell-yWlD">Списки создаются, есть ограничение на длину от 3 до 50 символов, списки с одинаковым именем создать нельзя, пробелы считаются за символ, что может приводить к путанице</td><td class="cell-ULm`"></td></tr><tr id="3a9fda44-8432-4c1b-ba6d-e4d68ec8423f"><td class="cell-title"><a href="https://www.notion.so/3a9fda4484324c1bba6de4d68ec8423f">Untitled</a></td><td class="cell-a~~f"></td><td class="cell-j\uU"></td><td class="cell-QHWR">2</td><td class="cell-~Pes">Во всплывшем окошке нажато “Create new list” и введено название</td><td class="cell-TEC\"></td><td class="cell-qczN"></td><td class="cell-yWlD"></td><td class="cell-ULm`"></td></tr><tr id="46b9fbec-dd63-49cc-bfed-76f3aff34fd8"><td class="cell-title"><a href="https://www.notion.so/46b9fbecdd6349ccbfed76f3aff34fd8">Untitled</a></td><td class="cell-a~~f"></td><td class="cell-j\uU"></td><td class="cell-QHWR"></td><td class="cell-~Pes"></td><td class="cell-TEC\"></td><td class="cell-qczN"></td><td class="cell-yWlD"></td><td class="cell-ULm`"></td></tr><tr id="8595e34d-10b2-4c4c-bb5b-aec47446a254"><td class="cell-title"><a href="https://www.notion.so/8595e34d10b24c4cbb5baec47446a254">Добавление товара в список желаний</a></td><td class="cell-a~~f"></td><td class="cell-j\uU"></td><td class="cell-QHWR">1</td><td class="cell-~Pes">Нажато сердечко</td><td class="cell-TEC\"></td><td class="cell-qczN">Желаемый товар будет добавлен в список желаний</td><td class="cell-yWlD">Не дает добавить товар, каждый раз выдает ошибку</td><td class="cell-ULm`"></td></tr><tr id="4483d174-8aa1-4c51-8375-dbd9858d4d07"><td class="cell-title"><a href="https://www.notion.so/4483d1748aa14c518375dbd9858d4d07">Untitled</a></td><td class="cell-a~~f"></td><td class="cell-j\uU"></td><td class="cell-QHWR">2</td><td class="cell-~Pes">Во всплывшем окошке нажато “Add to list”</td><td class="cell-TEC\"></td><td class="cell-qczN"></td><td class="cell-yWlD"></td><td class="cell-ULm`"></td></tr></tbody></table></div></article></body></html>
